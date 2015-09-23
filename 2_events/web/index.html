@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>2 Events</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script type="text/javascript">
+        
+        
+        
+        function writeText(divElem, text) {
+            divElem.innerText = text;
+            
+        }
+        
+        
+        
+        window.onload = function() {
+            var divs = document.getElementsByTagName('div');
+            var i;
+            for (i = 0; i < divs.length; i++) {
+                var div = divs[i];
+                div.addEventListener('click', function(e) {
+                    e = e || window.event;
+                    writeText(e.target, "You clicked me!");
+                })
+            }
+            
+            
+        }
+        
+        </script>
+        
+    </head>
+    <body>
+        <div>try</div>
+        <div>some</div>
+        <div>clicks!</div>
+    </body>
+</html>
