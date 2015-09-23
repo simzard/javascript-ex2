@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>3 Callbacks</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <script type="text/javascript">
+    var studentArray = [];
+    function adminStud(student, callbackFunc) {
+        callbackFunc(student);
+    }   
+    
+    // callbacks
+    function logItem(student) {
+        // write student information to the console log
+        console.log("student id: " + student.id + ", " +
+        "student name: " + student.name + ", " + 
+        "student classroom: " + student.classroom);
+    }
+    
+    function addItem(student) {
+        studentArray.push(student);
+        
+    }
+    
+    function displayRegisteredStudents() {
+        var ul = document.getElementById('list');
+        for(var x in studentArray) {
+            var li = document.createElement('li');
+            var text = document.createTextNode(
+                    "student id: " + studentArray[x].id + ", " +
+                    "student name: " + studentArray[x].name + ", " +
+                    "student classroom: " + studentArray[x].classroom);
+            li.appendChild(text);
+            ul.appendChild(li);
+        }
+        
+    }
+    
+    window.onload = function() {
+        // make some students 
+        student1 = {id:"001", name:"simon", classroom: 2.62};
+        student2 = {id:"002", name:"ib", classroom: 2.62};
+        student3 = {id:"003", name:"anders", classroom: 3.64};
+        
+        // log them
+        adminStud(student1,logItem);
+        adminStud(student2,logItem);
+        adminStud(student3,logItem);
+        
+        // register them
+        adminStud(student1,addItem);
+        adminStud(student2,addItem);
+        adminStud(student3,addItem);
+        
+        // display them
+        displayRegisteredStudents();
+        
+    }
+    
+    </script>
+        
+    </head>
+    
+    
+    
+    <body>
+        
+        
+        <div>Students registered:</div>
+        <ul id="list">
+            
+        </ul>
+    </body>
+</html>
